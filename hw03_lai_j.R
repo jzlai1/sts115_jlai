@@ -1,3 +1,5 @@
+#emf -  good! I left a few comments below (can look for "emf”) with suggestions to simplify your code. For future homeworks you can provide a translation for each line (especially if it is something new/complicated) rather than (or addition to) a more general summary statement. 
+
 # This file contains homework questions for the lecture on 
 # Control Structures and Functions.  Questions appear as comments 
 # in the file.  Place your answers as executable code immediately 
@@ -50,9 +52,11 @@ if (x != y) {
 x <- TRUE
 if (x == TRUE) {
   print("X is true")
-} else if (x == FALSE) {
+} else if (x == FALSE) { #emf - right idea but don't need the second "if" here 
   print("X is false")
 }
+
+
 
 # QUESTION 5: Write a "for" loop that iterates through the 
 # values 1 to 10 and prints the iteration number to screen 
@@ -110,7 +114,7 @@ for (i in vehicles) {
 # your vector and print each value to screen unless the value is 5.  (The
 # final output of your process should be: 1 2 3 4 6 7 8 9 10)
 
-values <- c(1,2,3,4,5,6,7,8,9,10)
+values <- c(1,2,3,4,5,6,7,8,9,10) #emf - can accomplish the same thing with c(1:10)
 for (i in values) {
   if (i != 5) {
     print(i)

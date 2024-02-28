@@ -20,6 +20,7 @@
 # 1. What is a Frequency Distribution? [comprehension]
 
 # A frequency distribution is a table which shows the frequency of every individual data in a sample. 
+# emf - need to be a bit more specific
 
 # 2. What is a Relative Frequency Distribution? [comprehension]
 

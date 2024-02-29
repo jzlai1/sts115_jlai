@@ -1,3 +1,6 @@
+# emf - you have great answers but do not include you code in many of your responses. 
+# See comments/suggestions below by searching for "emf".
+
 # Directions:
 
 # This file contains homework questions for the lecture on working with files
@@ -67,6 +70,7 @@
 #       [code completion + comprehension]
 #
 #		13 values are missing in the 'height' column.
+      # emf - good - what code did you use to solve this?
 #
 #     b. Think of a strategy to check the number of missing values in every
 #        column using no more than 3 lines of code. Hint: think about last
@@ -74,6 +78,7 @@
 #       [code completion + comprehension]
 #
 #		My strategy would be to use is.NA to check the entire dogs.rds file and see which columns are applicable to is.NA and then see which category has the most number of missing values.
+# emf - seem to be missing a step - how would this approach give you the number of missing values? 
 #
 #     c. Which column has the most missing values? Try to solve this by
 #        implementing your strategy from part b. If that doesn't work, you can
@@ -83,6 +88,7 @@
 #       [code completion + comprehension]
 #
 #		'weight' has the most missing values at 86.
+        # emf - good - what code did you use to solve this?
 
 
 # 7. Use indexing to get the subset of the dogs data which only contains large
@@ -97,13 +103,15 @@
 #        should be a logical vector). Does it contain missing values? 
 #       [code completion + comprehension]
 #
-#		Yes, the logical vector does contain some missing values for some rows.
+#		Yes, the logical vector does contain some missing values for some rows. 
+    # emf - where is your code?
 #
 #     b. Use the condition from part a to get the subset of all rows containing
 #        dogs that need daily grooming. How many rows are there?
 #       [code completion + comprehension]
 #
 #		There are 83 rows.
+      # emf - where is your code?
 #
 #     c. Use the `table` function to compute the number of dogs in each
 #        grooming category. You should see a different count than in part b for
@@ -111,6 +119,7 @@
 #       [code completion + interpretation]
 #
 #		The reason for this difference is because when I computed the subset for dogs that need daily grooming, NA values were included. When I used table, NA values were omitted. Thus, there is a difference between the two ways to count it.
+      # emf - where is your code?
 #
 #     d. Enclose the condition from part a in a call to the `which` function,
 #        and then use it to get the subset of all rows containing dogs that
@@ -120,24 +129,30 @@
 #
 #		There are 23 rows. The number of rows does agree with the count of 23 in part c.
 
+      # emf - where is your code?
+
 
 # 9. Compute a table that shows the number of dogs in each grooming category
 #    versus size. Does it seem like size is related to how often dogs need to
 #    be groomed? Explain your reasoning. [code completion + interpretation]
 #
 #	It does not necessarily seem like size is directly related to how often dogs need to be groomed. Based on the data, a similar ratio of large, medium, and small dogs all are more likely to be groomed weekly. A ratio of 30/36 large dogs, 29/38 medium dogs, and 29/38 small dogs need to be groomed weekly. Similarly, a smaller number of large, small, and medium dogs are groomed daily, and only one dog in the entire dataset is groomed monthly. Thus, there is no direct relationship between size and groom frequency.
+
+      # emf - where is your code?
 	
 # 10. Compute the number of dogs in the `terrier` group in two different ways:
 #
 #     a. By making a table from the `group` column. 
 #       [code completion + comprehension]
 #
-#		table_dogs <- table(dogs$group)#
+#		table_dogs <- table(dogs$group)
+#
 #
 #     b. By getting a subset of only terriers and counting the rows.
 #       [code completion + comprehension]
 #		
-#		terrier_subset <- dogs[dogs$group == "terrier", ]#		num_terriers <- nrow(terrier_subset)
+#		terrier_subset <- dogs[dogs$group == "terrier", ]
+#		num_terriers <- nrow(terrier_subset)
 #
 #     c. Computing the table is simpler (in terms of code) and provides more
 #        information. In spite of that, when would indexing (approach b) be more

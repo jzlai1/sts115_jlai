@@ -1,3 +1,5 @@
+# emf - good job! you can find comments below by searching for "emf"
+
 # Directions:
 
 # This file contains homework questions for the lecture on data forensics
@@ -44,6 +46,8 @@ nrow(cl) # Obtain number of rows
 # There are 2987 rows
 ncol(cl) # Obtain number of columns
 # There are 20 columns
+#emf - good - can also use the "dim()" function here
+
 #     b. The names of the columns. [code completion + comprehension]
 names(cl) # Obtain names of columns
 # "title"        "text"         "latitude"     "longitude"    "city"         "date_posted"  "date_updated" "price"        "deleted"     
@@ -147,6 +151,8 @@ tapply(cl$price, cl$pets, mean, na.rm = TRUE)
 # 1771.407 1531.630 1828.742 1740.128 
 # Apartments that allow pets are not necessarily more expensive than apartments that do not allow pets. From the computation, we can see that apartments that do not allow pets roughly cost $1740 while apartments that allow both are $1771, apartments that allow cats are $1531, and apartments that allow dogs are $1828. One thing that could be gathered is that apartments that allow dogs are on average more expensive than apartments that allow cats, dogs and cats, or neither.
 
+# emf - good
+
 # 9. The `sort` function sorts the elements of a vector. For instance, try
 #    running this code:
 #
@@ -189,5 +195,6 @@ tail(cl[order(cl$sqft, na.last = FALSE), c("city", "sqft", "price")], n = 5)
 #     c. Do you think any of the 5 square footage values are erroneous
 #        (incorrect in the data)? [interpretation]
 # I think that the 8190 sqft property in Roseville could be a mansion based on a quick Google search, so that could be a possible listing. However, the 88900 sqft property in Sacramento seems to be an error in the data. It seems wildly unlikely that the square footage is realistic.
+# emf - good!
 
 

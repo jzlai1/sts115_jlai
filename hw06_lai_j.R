@@ -1,3 +1,5 @@
+# emf - good job! you can find comments below by searching for "emf"
+
 # Directions:
 
 # This file contains homework questions for the lecture on data visualization.
@@ -73,6 +75,8 @@ ggplot(dogs, aes(x = group)) + geom_bar(aes(fill = size), position = "dodge")
 
 # I set the position argument to 'dodge' because I felt like it most accurately communicated the data. When looking at the data through this way, I can compare each group's large, medium, and small to each other. When the bar is filled by size on top of one another, it is hard to get an exact number of the count. You would have to subtract values in order to get the exact value, which requires extra work.  
 
+# emf - good! the bars in this plot have some variation in their widths based on how many size categories are included - is there a way to make these more uniform?
+
 # 3.
 #   a. Which geometry function makes a histogram? Use the ggplot2 website or
 #      cheat sheet to find out.
@@ -102,6 +106,8 @@ ggplot(dogs, aes(x = longevity)) + geom_histogram(bins = 40)
 ggplot(dogs) + 
   aes(x = height, y = weight, color = "red", shape = group) +
   geom_point()
+
+# emf - this plot is missing a representation/shape for the "working" category of dogs - do you know why this happened? do you think this changes your answer for part b and c?
 
 #   b. Do height and weight effectively separate the different groups of dogs?
 #      In other words, are there clear boundaries between the groups in the
@@ -167,12 +173,17 @@ ggplot(dogs) +
 # The graphic is problematic because it is very confusing to understand. It attempts to convey data that adds up to 100% but the way the data visualization is presented is very unclear.
 # Since the categories that make up the data are all bordering and wrapped around each other, it is hard to tell how much bigger or smaller one category is.
 
+#emf - could engage more with the visualization principles and perception rules discussed in class 
+
 #   d. Describe in 1-2 sentences one thing that this visualization actually already does well.
 
 # The data visualization does give the percentages on the side so that looking at the chart is not necessary.
 
 # 7. Look at the plot posted with this assignment on Canvas.
 #    a. Identify the marks and channels in this plot. Write them out for this answer
+
+# emf - no response for 7a?
+
 #    b. Write the code to generate this plot. (Hint: start with identifying the 
 #        variables on each axis, then think about the types of channels).
 

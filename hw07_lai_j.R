@@ -1,3 +1,6 @@
+# emf - hi josh - I see that this was submitted a bit late - no points off this time. but make sure that future assignments are on time! response is incomplete as it is missing an identification of where code in the course reader breaks. code below could also use more annotation to walk us through your process.
+
+
 url = "https://theaggie.org/category/features/"
 doc = read_html(url)
 xml_find_all(doc, "//div[contains(@class, 'td_block_inner')]")
@@ -23,7 +26,8 @@ article_urls <- list()
 i <- 1
 
 # On the last page, the next URL will be `NA`.
-while (!is.na(url)) {
+#while (!is.na(url)) {
+while (!is.na(url)&& i<=5) { # emf - to only scrape first 5 pages
   # Download and parse the page.
   page <- read_html(url)
   result <- parse_article_links(page)

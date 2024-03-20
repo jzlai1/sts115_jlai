@@ -1,3 +1,5 @@
+# emf - good job! see comments below
+
 # Directions:
 
 # This file contains homework questions for the lecture on data visualization.
@@ -62,7 +64,7 @@ cat(y)
 
 input <- "He wanted to say hello but was afraid"
 
-vec <- strsplit(input, "\\s+")[[1]]
+vec <- strsplit(input, "\\s+")[[1]] # emf - good - annotations would be helpful here 
 
 hello <- str_detect(vec, "hello")
 
@@ -98,4 +100,4 @@ writing <- findAssocs(dtm, "writing", .85)
 writing[[1]][1:15]
 
 
-
+# emf - section 15.8 of the course reader also includes the subsections 15.8.1 - 15.8.3

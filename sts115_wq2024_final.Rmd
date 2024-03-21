@@ -25,6 +25,14 @@ QUESTION 1 (10 Points): The variable `events`, defined below, contains the dates
 
 events = c("Thu Apr-11 in 1968", "Tue May-8 in 1945", "Sun Dec-23 in 1900")
 
+# Extract date from each occurrence
+dates <- sub(".*?(\\w{3}\\s\\w{3}-\\d+).*", "\\1", events)
+
+# Set the format of the date
+format <- "%a %b-%d"
+
+# Convert to R Date object
+r_date <- as.Date(dates, format = format)
 
 ```
 
@@ -59,7 +67,7 @@ way of 'escaping' Regex escape characters.
 ```{r}
 # Answer Question 2 in this code chunk:
 
-menu = "BURRITOS
+menu <- "BURRITOS
 Veggie burrito ........ 7.49
 Regular ............. 7.99
 Super ............... 9.49
@@ -67,7 +75,23 @@ Super giant .......... 17.99
 Chimichanga ......... 9.99
 Beans, rice & cheese .... 4.99"
 
+library(stringr)
 
+# Split the menu into separate lines
+menu_lines <- strsplit(menu, "\n")[[1]]
+
+# Remove empty lines
+menu_lines <- menu_lines[menu_lines != ""]
+
+# Extract type and price using regular expressions
+burrito_data <- str_match(menu_lines, "(.*)\\.+\\s+([0-9.]+)$")
+
+
+# Create a data frame
+burritos <- data.frame(type = burrito_data[,2], price = as.numeric(burrito_data[,3]))
+
+# Remove endline
+burritos$type <- gsub("\\.+\\s*$", "", burritos$type)
 
 ```
 
@@ -76,6 +100,26 @@ QUESTION 3 (20 Points): Use the Cat Facts API documentation at https://alexwohlb
 ```{r}
 # Answer Question 3 in this code chunk:
 
+# Load necessary library
+library(httr)
+
+# Define the base URL and endpoint for retrieving facts
+base_url <- "https://cat-fact.herokuapp.com"
+endpoint <- "/facts"
+
+url <- paste0(base_url, endpoint)
+
+response <- GET(url)
+
+for (fact in cat_facts) {
+  print(fact$text)
+}
+
+# [1] "Facttttttt."
+# [1] "Кошки не чувствуют вкуса сладкого."
+# [1] "Cats the best!!!."
+# [1] "Корректно отображается в Chrome."
+# [1] "Cats can jump up to 7 times their tail length."
 
 ```
 
@@ -90,6 +134,35 @@ You DO NOT need to worry about cleaning up the text to remove footnotes, parenth
 ```{r}
 # Answer Question 4 in this code chunk:
 
+library(rvest)
+url <- "https://en.wikipedia.org/wiki/List_of_female_Nobel_laureates"
+page <- read_html(url)
+
+# Extract the table containing female Nobel Laureates
+table <- html_table(html_nodes(page, "table")[[3]], fill = TRUE)
+
+# Convert the provided table to a data frame
+laureates_df <- as.data.frame(table, stringsAsFactors = FALSE)
+
+# Rename the columns based on the second row
+colnames(laureates_df) <- laureates_df[2, ]
+
+# Select relevant columns
+laureates <- laureates_df[, c("Year", "Name", "Born", "Rationale")]
+
+# Delete rows with non number values in Year column
+laureates <- laureates[grepl("^\\d", laureates$Year), ]
+
+# Extract country from born column
+laureates$Country <- gsub(".*\\b(\\w+)$", "\\1", laureates$Born)
+
+# Replace instances of 'States' with 'United States'
+laureates$Country <- gsub("States", "United States", laureates$Country)
+
+# Delete born column
+laureates <- laureates[, -grep("Born", names(laureates))]
+
+print(laureates)
 
 ```
 
@@ -106,6 +179,45 @@ d. How many missing values are in the data set in total? (5 Points)
 # Use this code chuck for any code you use to help answer 
 # Question 5.  Narrative answers to the question can present
 # here as comments or in the narrative answer block below
+
+nobel_laureates <- readRDS("nobel_laureates.rds")
+
+# a.
+
+# Get the number of rows and columns
+num_rows <- nrow(nobel_laureates)
+num_cols <- ncol(nobel_laureates)
+
+num_rows
+# 58
+
+num_cols
+# 7
+
+# b.
+
+# Get the names and classes of columns
+column_info <- sapply(nobel_laureates, function(x) paste(class(x), collapse = ", "))
+
+column_info
+#       Year    Laureate     Country    Country2    Category   Category2        Note 
+#  "integer" "character"    "factor"    "factor"    "factor"    "factor" "character" 
+
+# c.
+
+# Count missing values in each column
+missing_values <- colSums(is.na(nobel_laureates))
+
+missing_values
+#     Year  Laureate   Country  Country2  Category Category2      Note 
+#        0         0         0        50         0        46        29 
+
+# d.
+# Count total missing values
+total_missing_values <- sum(is.na(nobel_laureates))
+
+total_missing_values
+# 125
 
 
 ```
@@ -133,6 +245,20 @@ you will accomplish this iteration.
 
 ```{r}
 # Answer Question 6 in this code chunk:
+nobel_laureates_messy <- readRDS("nobel_laureates_messy.rds")
+library(dplyr)
+library(stringr)
+
+
+# Separating name and note
+nobel_laureates_clean <- nobel_laureates_messy %>%
+  mutate(Laureate = str_replace(Laureate, "\\s*\\(.*\\)", ""),  # Remove the note from the Laureate column
+         Note = str_extract(nobel_laureates_messy$Laureate, "\\(.*\\)"))  # Extract the note from the Laureate column
+
+# Formatting note column
+nobel_laureates_clean$Note <- str_replace(nobel_laureates_clean$Note, "\\(|\\)", "")
+
+print(nobel_laureates_clean)
 
 
 ```

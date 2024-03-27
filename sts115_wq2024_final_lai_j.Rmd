@@ -3,6 +3,9 @@ title: "STS 115: Final Exam - WQ 2024"
 output: html_notebook
 ---
 
+```
+emf - great job - see "emf" below for minor comments.
+```
 Welcome to the Winter 2024 Quarter STS115 Final Exam.  To complete the exam, be sure to place the file in your local sts115 directory which you have placed under Git version control on your computer.  After you have placed this file in the proper location, and before answering any questions, add the file to your repository's staging area and run a commit to save the empty version.  Then, take the exam by writing answers to each question in the area provided immediately following each question. You can test and execute any code you write in a chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
 
 A brief note on how this exam will be graded.  As you will see, the questions in this exam are more open-ended than the questions on the midterm exam, requiring you to problem solve rather than simply replicate coding practice. As such, there are many potentially 'correct' answers to each problem.  With this in mind, we are not looking for a particular approach to coding a solution to each problem, but rather we will be assessing your ability to develop and implement a reasonable approach to solving the problem.  As such, even if you aren't able to code a fully functional solution, you can earn significant credit for a problem by simply attempting a solution and explaining how and why that solution would work. To that end, we encourage you to include a lot of comments in your code explaining what you think it is doing and why you are trying to do it.  With this information available, we can award reasonable credit even if you aren't able to get the code syntax exactly correct.
@@ -93,6 +96,8 @@ burritos <- data.frame(type = burrito_data[,2], price = as.numeric(burrito_data[
 # Remove endline
 burritos$type <- gsub("\\.+\\s*$", "", burritos$type)
 
+# emf - great! how can you remove the first row with NAs?
+
 ```
 
 QUESTION 3 (20 Points): Use the Cat Facts API documentation at https://alexwohlbruck.github.io/cat-facts/docs/ to make a request to the Cat Facts "facts" endpoint and retrieve 5 random facts about cats. Note that you must properly construct the URL for your request by adding the "endpoint" for your specific request as documented on the site to the "base URL for all endpoints" which is also documented on the site.  All of the information that you need to construct a well-formed URL for your request appears somewhere in the documentation, and you should be able to do using your knowledge of how URLs are constructed.
@@ -110,6 +115,8 @@ endpoint <- "/facts"
 url <- paste0(base_url, endpoint)
 
 response <- GET(url)
+
+# emf - "Error in cat_facts : object 'cat_facts' not found"
 
 for (fact in cat_facts) {
   print(fact$text)
@@ -180,7 +187,7 @@ d. How many missing values are in the data set in total? (5 Points)
 # Question 5.  Narrative answers to the question can present
 # here as comments or in the narrative answer block below
 
-nobel_laureates <- readRDS("nobel_laureates.rds")
+#nobel_laureates <- readRDS("nobel_laureates.rds")
 
 # a.
 
@@ -245,7 +252,7 @@ you will accomplish this iteration.
 
 ```{r}
 # Answer Question 6 in this code chunk:
-nobel_laureates_messy <- readRDS("nobel_laureates_messy.rds")
+#nobel_laureates_messy <- readRDS("nobel_laureates_messy.rds")
 library(dplyr)
 library(stringr)
 
